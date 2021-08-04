@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <a type="button" class="btn btn-primary btn-lg" href="/product/add">Add New Product</a>
+    <h1>List Products</h1>
+    <table class="table table-hover">
+        <tr>
+            <th>Product Name</th>
+            <th>Information</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <%
+        products.map(pro=>{%>
+            <tr>
+                <td><%=  pro.name %></td>
+                <td><%=  pro.info %></td>
+                <td><%=  pro.price %></td>
+                <td><%=  pro.quantity %></td>
+                <td>
+                    <%
+                    if(pro.category){%>
+                        <%=  pro.category.name %>
+                    <%}
+                    %>
+                </td>
+                <td><a href="/category/edit/<%= pro._id %>" class="btn btn-warning">Edit</a></td>
+                <td> <%- include('../part/deleteForm',{url:`/product/delete/${pro._id}`}) %></td>
+            </tr>
+        <%})
+        %>
+        
+    </table>
+</div>
