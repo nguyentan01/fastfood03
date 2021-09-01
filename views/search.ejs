@@ -1,0 +1,22 @@
+<div class="container my-5">
+    <h3>Search results for "<%= query %>"</h3>
+    <%- include('part/message') %>
+    <div class="row">
+        <%
+            products.map(pro=>{%>
+                <div class="col-sm-6 col-md-4">
+                    <div class="product-card">
+                        <div class="img">
+                            <img src="<%=pro.imageSrc %>" alt="">
+                        </div>
+                        <div class="content">
+                            <h3><%=pro.name%></h3>
+                            <h5><%= pro.price  %></h5>
+                            <a href="/cart/add/<%= pro._id %>" class="addToCart btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <%})
+        %>
+    </div>
+</div>

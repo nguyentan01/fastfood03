@@ -1,0 +1,132 @@
+<div class="container mt-5">
+  <h1>Cart List</h1>
+  <table class="table table table-striped">
+    <tr>
+      <th>Product Name</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Delete</th>
+      <th>Total</th>
+    </tr>
+
+    <% cart.map(x=>{%>
+    <tr id="tr_cart_<%= x.id %>">
+      <td><%= x.item.name %></td>
+      <td>
+        <img src="<%= x.imagesrc %>" alt="" style="width: 50px; height: 50px" />
+      </td>
+      <td class="price"><%= x.item.price %></td>
+      <td class="qty-row">
+        <div class="edit">
+          <a
+            id="<%= x.id %>"
+            style="display: block"
+            class="reduce_btn btn btn-success"
+            href="/cart/reduce/<%= x.id %>"
+            >-</a
+          >
+          <span id="qty1<%= x.id%>">
+            <span id="qty2<%= x.id%>">
+              <input
+                name="quantity"
+                value="<%= x.qty %>"
+                title="Qty"
+                class="quantity"
+              />
+            </span>
+          </span>
+          <a
+            id="<%= x.id %>"
+            style="display: block"
+            class="increase_btn btn btn-success"
+            href="/cart/increase/<%= x.id %>"
+            >+</a
+          >
+        </div>
+      </td>
+      <td>
+        <a
+          id="<%= x.id %>"
+          class="delete_btn btn btn-danger"
+          href="/cart/delete/<%= x.id %>"
+          >Delete</a
+        >
+      </td>
+      <td>
+        <span id="miniTotal1<%= x.id%>">
+          <span id="miniTotal2<%= x.id%>"><%=x.miniTotal%> </span>
+        </span>
+      </td>
+    </tr>
+    <%}) %>
+  </table>
+  <h1>
+    Total price:
+    <span id="total1">
+      <span id="total2"><%= total%></span>
+    </span>
+  </h1>
+  <a href="/cart/checkout" class="btn btn-success">Checkout</a>
+</div>
+<script>
+  const root = location.protocol + "//" + location.host;
+  $(".increase_btn").click(function (event) {
+    event.preventDefault();
+    const href = this.href;
+    const id = this.id;
+    const qty2 = "#qty2" + id;
+    $.ajax({
+      url: href,
+      type: "GET",
+      data: {},
+      success: function (data) {
+        swal(data, "continue", "success");
+        $("#total1").load(root + "/cart #total2");
+        $("#miniTotal1" + id).load(root + "/cart #miniTotal2" + id);
+        $("#qty1" + id).load(root + "/cart #qty2" + id);
+      },
+    });
+  });
+
+  $(".reduce_btn").click(function (event) {
+    event.preventDefault();
+    const href = this.href;
+    const id = this.id;
+    const qty2 = "#qty2" + id;
+    const tr_cart_id = "#tr_cart_" + this.id;
+    $.ajax({
+      url: href,
+      type: "GET",
+      data: {},
+      success: function (data) {
+        swal(data, "continue", "success");
+        if ($(qty2).text() === "1") {
+          $(tr_cart_id).empty();
+        }
+        $("#total1").load(root + "/cart #total2");
+        $("#miniTotal1" + id).load(root + "/cart #miniTotal2" + id);
+        $("#qty1" + id).load(root + "/cart #qty2" + id);
+        $("#numCart1").load(root + " #numCart2");
+      },
+    });
+  });
+
+  $(".delete_btn").click(function (event) {
+    event.preventDefault();
+    const href = this.href;
+    const id = this.id;
+    const tr_cart_id = "#tr_cart_" + this.id;
+    $.ajax({
+      url: href,
+      type: "GET",
+      data: {},
+      success: function (data) {
+        swal(data, "continue", "success");
+        $("#total1").load(root + "/cart #total2");
+        $(tr_cart_id).empty();
+        $("#numCart1").load(root + " #numCart2");
+      },
+    });
+  });
+</script>

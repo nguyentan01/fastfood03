@@ -1,34 +1,68 @@
 <div class="form-floating mb-3">
-    <input type="text" required class="form-control" name="name" placeholder="Product Name" 
-    value="<%= product.name %>">
-    <label for="floatingInput">Product Name</label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="text" required class="form-control" name="info" placeholder="Product Information" 
-    value="<%= product.info %>">
-    <label for="floatingInput">Product Information</label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="text" required class="form-control" name="price" placeholder="Price " 
-    value="<%= product.price %>">
-    <label for="floatingInput">Price</label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="text" required class="form-control" name="quantity" placeholder="Product Quantity" 
-    value="<%= product.quantity %>">
-    <label for="floatingInput">Product Quantity</label>
-  </div>
-  <div class="form-floating mb-3">
-    <select name="category" >
-      <%
-      categories.map(cate=>{%>
-        <option value="<%= cate._id %>"><%= cate.name %></option>
-      <%})
-      %>
-      
-    </select>
-    </div>
- 
-  <div class="form-floating">
-    <input type="submit" class="form-control btn btn-primary" id="floatingPassword" value="Save">
-  </div>
+  <input
+    type="text"
+    required
+    class="form-control"
+    name="name"
+    placeholder="Product Name"
+    value="<%= product.name %>"
+    style="height: 50px;"
+  />
+  <label for="floatingInput">Product Name</label>
+</div>
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    required
+    class="form-control"
+    name="info"
+    placeholder="Product Information"
+    value="<%= product.info %>"
+    style="height: 50px;"
+  />
+  <label for="floatingInput">Product Information</label>
+</div>
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    required
+    class="form-control"
+    name="price"
+    placeholder="Price "
+    value="<%= product.price %>"
+    style="height: 50px;"
+  />
+  <label for="floatingInput">Price</label>
+</div>
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    required
+    class="form-control"
+    name="quantity"
+    placeholder="Product Quantity"
+    value="<%= product.quantity %>"
+    style="height: 50px;"
+  />
+  <label for="floatingInput">Product Quantity</label>
+</div>
+<div class="form-floating mb-3" style="height: 80px;">
+  <select name="category" style="height: 60px; border: 3px solid; margin-top: 30px;">
+    <% categories.map(cate=>{%>
+    <option value="<%= cate._id %>" ><%= cate.name %></option>
+    <%}) %>
+  </select>
+  <label for="floatingInput" style="height: 25px;">Category</label>
+</div>
+<div class="form-floating">
+  <input type="file" name="image" class="filepond" style="height: 50px;"/>
+</div>
+<div class="form-floating">
+  <input
+    type="submit"
+    class="form-control btn btn-primary"
+    id="floatingPassword"
+    value="Save"
+    style="height: 50px;"
+  />
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <a href="/" class="btn btn-secondary">Home</a>
+  <div class="form-group">
+    <form action="/cart/order" method="POST">
+      <h2 style="margin-top: 20px">DETAIL:</h2>
+      <table class="table table table-striped" style="width: 70%;">
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <% products.forEach(product=>{%>
+        <tr>
+          <td><%= product.item.name %></td>
+          <td><%= product.qty%></td>
+          <td><%= product.item.price*product.qty%></td>
+        </tr>
+        <%}) %>
+      </table>
+      <div class="total">
+        <h2>Total: <%= total %></h2>
+        <button class="btn btn-success" type="submit">Order now!</button>
+      </div>
+    </form>
+  </div>
+</div>

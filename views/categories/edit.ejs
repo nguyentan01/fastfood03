@@ -1,1 +1,42 @@
-<h1>day la edit</h1>
+<form action="/category/edit/<%= category._id%>?_method=PUT" method="POST">
+    <div
+      class="container"
+      style="
+        display: grid;
+        place-items: center;
+        width: 100%;
+        /* background: pink; */
+        height: 50vh;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        text-align: center;
+      "
+    >
+      <h1>Edit Category</h1>
+      <div
+        class="form-floating"
+        style="margin-top: 30px; width: 60%;"
+      >
+        <input
+          type="text"
+          class="form-control"
+          value="<%= category.name%>"
+          style="height: 70px; width: 100%; padding: 50px auto;"
+          name="name"
+        />
+        <label for="floatingInput">Category Name</label>
+      </div>
+      <div
+      class="form-floating"
+      style="width: 60%; display: flex; justify-content: center"
+    >
+      <input
+        type="submit"
+        class="form-control btn btn-primary"
+        value="Save"
+        style="height: 50px; font-size: 1.3em; margin-top: 20px;"
+      />
+    </div>
+    </form>
+  

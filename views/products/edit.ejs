@@ -1,0 +1,109 @@
+<form action="/product/edit/<%= product._id%>?_method=PUT" method="POST">
+  <div
+    class="container"
+    style="
+      display: grid;
+      place-items: center;
+      width: 100%;
+      /* background: pink; */
+      height: 80vh;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    "
+  >
+    <h1>Edit Product</h1>
+    <div
+      class="form-floating"
+      style="width: 60%; display: flex; justify-content: center"
+    >
+      <input
+        type="text"
+        class="form-control"
+        value="<%= product.name%>"
+        style="height: 50px; width: 100%"
+        name="name"
+      />
+      <label for="floatingInput">Product Name</label>
+    </div>
+    <div
+      class="form-floating"
+      style="width: 60%; display: flex; justify-content: center"
+    >
+      <input
+        type="text"
+        class="form-control"
+        value="<%= product.info%>"
+        style="height: 50px; width: 100%"
+        name="info"
+      />
+      <label for="floatingInput">Product Info</label>
+    </div>
+    <div
+      class="form-floating"
+      style="width: 60%; display: flex; justify-content: center"
+    >
+      <input
+        type="text"
+        class="form-control"
+        value="<%= product.price%>"
+        style="height: 50px; width: 100%"
+        name="price"
+      />
+      <label for="floatingInput">Price</label>
+    </div>
+    <div
+      class="form-floating"
+      style="width: 60%; display: flex; justify-content: center"
+    >
+      <input
+        type="text"
+        class="form-control"
+        value="<%= product.quantity%>"
+        style="height: 50px; width: 100%"
+        name="quantity"
+      />
+      <label for="floatingInput">Quantity</label>
+    </div>
+    <div
+      class="form-floating"
+      style="
+        width: 60%;
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+      "
+    >
+      <select
+        name="category"
+        style="height: 50px; border: 3px solid; margin-top: 30px"
+      >
+        <% categories.map(cate=>{%>
+        <option value="<%= cate._id %>"><%= cate.name %></option>
+        <%}) %>
+      </select>
+      <label
+        for="floatingInput"
+        style="
+          height: 25px;
+          /* background: yellow; */
+          text-align: left;
+          width: 100px;
+          padding: 0;
+        "
+        >Category</label
+      >
+    </div>
+    <div
+      class="form-floating"
+      style="width: 60%; display: flex; justify-content: center"
+    >
+      <input
+        type="submit"
+        class="form-control btn btn-primary"
+        value="Save"
+        style="height: 50px; font-size: 1.3em"
+      />
+    </div>
+  </div>
+</form>
