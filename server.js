@@ -13,6 +13,7 @@ const app = express()
 const session = require('express-session')
 const flash = require('express-flash')
 const methodOverride = require('method-override')
+require('dotenv').config() //goi env
 app.use(express.urlencoded({ limit: '10mb', extended: false }))
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
@@ -34,7 +35,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 const connectFunction = async () => {
     try {
-        await mongoose.connect('mongodb://localhost/bai2', {
+        await mongoose.connect('mongodb+srv://qlhd:qlhdnguyenngoctan123@cluster0.oco3s.mongodb.net/projectfull1?retryWrites=true&w=majority', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
@@ -53,4 +54,4 @@ app.use('/product', productRouter)
 app.use('/cart', cartRouter)
 app.use('/user', userRouter)
 app.use('/search', searchRouter)
-app.listen(3000)
+app.listen(process.env.PORT||3000)
