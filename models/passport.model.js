@@ -42,7 +42,7 @@ module.exports = function (passport) {
     passport.use(new githubStrategy({
         clientID: "0f4b68c73cd8ce8e5aa5",
         clientSecret: "dce050a59a4bb5b9fca64b67735b13ccecb5443f",
-        callbackURL: "process.env.PORT/user/github/callback"
+        callbackURL: "https://fastfood03.herokuapp.com/user/github/callback"
     },
         async function (accessToken, refreshToken, profile, done) {
             console.log(profile)
