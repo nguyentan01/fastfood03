@@ -42,7 +42,7 @@ module.exports = function (passport) {
     passport.use(new githubStrategy({
         clientID: "0f4b68c73cd8ce8e5aa5",
         clientSecret: "dce050a59a4bb5b9fca64b67735b13ccecb5443f",
-        callbackURL: "http://localhost:3000/user/github/callback"
+        callbackURL: "process.env.PORT/user/github/callback"
     },
         async function (accessToken, refreshToken, profile, done) {
             console.log(profile)
@@ -67,7 +67,7 @@ module.exports = function (passport) {
     passport.use(new googleStrategy({
         clientID: "204932086780-n5vl3fko9noeeql8aemt9qu2bn8thufo.apps.googleusercontent.com",
         clientSecret: "D_Wvo8W1v1YPldH05FawaY-x",
-        callbackURL: "http://localhost:3000/user/google/callback"
+        callbackURL: "process.env.PORT/user/google/callback"
     },
         async function (accessToken, refreshToken, profile, done) {
             try {
